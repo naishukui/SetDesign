@@ -58,17 +58,17 @@ mytheme = list(
 
 powerDerived<-powerC_derive(k=50,n=2000,alpha=0.05,p=0.01,list1=beta1list1,list2=beta2list1)
 result<-get(load("/path_to_the_file/snpC.Rdata"))
-powerE <- sapply(result, function(x) x$powerE)
+powerE2 <- sapply(result, function(x) x$powerE2)
 powerCombined <- sapply(result, function(x) x$powerCombined)
 powerSeparated <- sapply(result, function(x) x$powerSeparated)
 
-df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerE,powerDerived))
+df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerDerived,powerE2))
 colnames(df)<-c("beta1","beta2","power1","power2","power3","power4")
 
-power1<-cbind(df[,1:3],rep("S_seperated",25))
-power2<-cbind(df[,c(1,2,4)],rep("S_combined",25))
-power3<-cbind(df[,c(1,2,5)],rep("T_mean",25))
-power4<-cbind(df[,c(1,2,6)],rep("T_derive",25))
+power1<-cbind(df[,1:3],rep("S_true",25))
+power2<-cbind(df[,c(1,2,4)],rep("S_misspecified",25))
+power3<-cbind(df[,c(1,2,5)],rep("C_true",25))
+power4<-cbind(df[,c(1,2,6)],rep("C_misspecified",25))
 
 colnames(power1)[3:4]<-c("power","group")
 colnames(power2)[3:4]<-c("power","group")
@@ -76,7 +76,7 @@ colnames(power3)[3:4]<-c("power","group")
 colnames(power4)[3:4]<-c("power","group")
 
 dfnew<-rbind(power1,power2,power3,power4)
-beta2<-as.vector(c(0.1,0.25,0.5,0.75))
+beta2<-as.vector(c(0.1,0.25,0.5,0.75,0.9))
 dfsub<-list()
 for (i in 1:5){
   dfsub[[i]] <- dfnew[dfnew$beta2==beta2[i], ]
@@ -89,23 +89,23 @@ for (i in 1:5){
     mytheme
 }
 
-ggarrange(p1, p2, p3, p4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+ggarrange(p1, p2, p3, p4,p5, ncol=3, nrow=2, common.legend = TRUE, legend="bottom")
 
 ## Continuous outcome, 50 correlated SNPs,MAF=0.05, rho=0.15, 0.1<=beta<=0.9
 
 result<-get(load("/path_to_the_file/snpCcor.Rdata"))
-powerE <- sapply(result, function(x) x$powerE)
+powerE2 <- sapply(result, function(x) x$powerE2)
 powerCombined <- sapply(result, function(x) x$powerCombined)
 powerSeparated <- sapply(result, function(x) x$powerSeparated)
 powerDerived<- powerC_deriveCor(k=50,n=2000,alpha=0.05,p=0.05,rho=0.15,list1=beta1list1,list2=beta2list1)
 
-df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerE,powerDerived))
+df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerDerived,powerE2))
 colnames(df)<-c("beta1","beta2","power1","power2","power3","power4")
 
-power1<-cbind(df[,1:3],rep("S_seperated",25))
-power2<-cbind(df[,c(1,2,4)],rep("S_combined",25))
-power3<-cbind(df[,c(1,2,5)],rep("T_mean",25))
-power4<-cbind(df[,c(1,2,6)],rep("T_derive",25))
+power1<-cbind(df[,1:3],rep("S_true",25))
+power2<-cbind(df[,c(1,2,4)],rep("S_misspecified",25))
+power3<-cbind(df[,c(1,2,5)],rep("C_true",25))
+power4<-cbind(df[,c(1,2,6)],rep("C_misspecified",25))
 
 colnames(power1)[3:4]<-c("power","group")
 colnames(power2)[3:4]<-c("power","group")
@@ -113,7 +113,9 @@ colnames(power3)[3:4]<-c("power","group")
 colnames(power4)[3:4]<-c("power","group")
 
 dfnew<-rbind(power1,power2,power3,power4)
-beta2<-as.vector(c(0.1,0.25,0.5,0.75))
+beta2<-as.vector(c(0.1,0.25,0.5,0.75,0.9))
+
+
 dfsub<-list()
 
 
@@ -129,22 +131,22 @@ for (i in 1:5){
 
 
 }
-ggarrange(p1, p2, p3, p4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+ggarrange(p1, p2, p3, p4,p5, ncol=3, nrow=2, common.legend = TRUE, legend="bottom")
 
 ## Binary outcome, 50 uncorrelated SNPs, MAF=0.01, 0.1<=beta<=0.9
 
 powerDerived<-powerD_derive(kk=50,n=2000,alpha=0.05,p=0.01,list1=beta1list1,list2=beta2list1)
 result<-get(load("/path_to_the_output_file/snpD.Rdata"))
-powerE <- sapply(result, function(x) x$powerE)
+powerE2 <- sapply(result, function(x) x$powerE2)
 powerCombined <- sapply(result, function(x) x$powerCombined)
 powerSeparated <- sapply(result, function(x) x$powerSeparated)
-df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerE,powerDerived))
+df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerDerived,powerE2))
 colnames(df)<-c("beta1","beta2","power1","power2","power3","power4")
 
-power1<-cbind(df[,1:3],rep("S_seperated",25))
-power2<-cbind(df[,c(1,2,4)],rep("S_combined",25))
-power3<-cbind(df[,c(1,2,5)],rep("T_mean",25))
-power4<-cbind(df[,c(1,2,6)],rep("T_derive",25))
+power1<-cbind(df[,1:3],rep("S_true",25))
+power2<-cbind(df[,c(1,2,4)],rep("S_misspecified",25))
+power3<-cbind(df[,c(1,2,5)],rep("C_true",25))
+power4<-cbind(df[,c(1,2,6)],rep("C_misspecified",25))
 
 colnames(power1)[3:4]<-c("power","group")
 colnames(power2)[3:4]<-c("power","group")
@@ -152,7 +154,7 @@ colnames(power3)[3:4]<-c("power","group")
 colnames(power4)[3:4]<-c("power","group")
 
 dfnew<-rbind(power1,power2,power3,power4)
-beta2<-as.vector(c(0.1,0.25,0.5,0.75))
+beta2<-as.vector(c(0.1,0.25,0.5,0.75,0.9))
 dfsub<-list()
 for (i in 1:5){
   dfsub[[i]] <- dfnew[dfnew$beta2==beta2[i], ]
@@ -164,7 +166,7 @@ for (i in 1:5){
                 y = "power")) +
     mytheme
 }
-ggarrange(p1, p2, p3, p4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+ggarrange(p1, p2, p3, p4,p5, ncol=3, nrow=2, common.legend = TRUE, legend="bottom")
 
 ## Binary outcome, 50 correlated SNPs,MAF=0.05, rho=0.15, 0.1<=beta<=0.9
 
@@ -174,13 +176,13 @@ powerE <- sapply(result, function(x) x$powerE)
 powerCombined <- sapply(result, function(x) x$powerCombined)
 powerSeparated <- sapply(result, function(x) x$powerSeparated)
 
-df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerE,powerDerived))
+df<-as.data.frame(cbind(as.vector(beta1list1),as.vector(beta2list1),powerSeparated,powerCombined,powerDerived,powerE2))
 colnames(df)<-c("beta1","beta2","power1","power2","power3","power4")
 
-power1<-cbind(df[,1:3],rep("S_seperated",25))
-power2<-cbind(df[,c(1,2,4)],rep("S_combined",25))
-power3<-cbind(df[,c(1,2,5)],rep("T_mean",25))
-power4<-cbind(df[,c(1,2,6)],rep("T_derive",25))
+power1<-cbind(df[,1:3],rep("S_true",25))
+power2<-cbind(df[,c(1,2,4)],rep("S_misspecified",25))
+power3<-cbind(df[,c(1,2,5)],rep("C_true",25))
+power4<-cbind(df[,c(1,2,6)],rep("C_misspecified",25))
 
 colnames(power1)[3:4]<-c("power","group")
 colnames(power2)[3:4]<-c("power","group")
@@ -188,7 +190,7 @@ colnames(power3)[3:4]<-c("power","group")
 colnames(power4)[3:4]<-c("power","group")
 
 dfnew<-rbind(power1,power2,power3,power4)
-beta2<-as.vector(c(0.1,0.25,0.5,0.75))
+beta2<-as.vector(c(0.1,0.25,0.5,0.75,0.9))
 dfsub<-list()
 
 #p1-p5
@@ -202,7 +204,7 @@ for (i in 1:5){
                 y = "power")) +
     mytheme
 }
-ggarrange(p1, p2, p3, p4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+ggarrange(p1, p2, p3, p4,p5, ncol=3, nrow=2, common.legend = TRUE, legend="bottom")
 
 
 

@@ -4,7 +4,7 @@ library(SKAT)
 library(bindata)
 
 output_path<-"/path_to_the_output_file/"
-output_file_name<-"snpC_0.01_"
+output_file_name<-"snpC_"
 
 index <- as.numeric(commandArgs(TRUE)[1])
 

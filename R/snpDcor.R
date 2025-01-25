@@ -1,10 +1,10 @@
-#For binary outcome and correalted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method 
+#For binary outcome and correalted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method
 
 library(SKAT)
 library(bindata)
 library(expm)
 output_path<-"/path_to_the_output_file/"
-output_file_name<-"snpCcor_0.05_0.15_"
+output_file_name<-"snpDcor_"
 index <- as.numeric(commandArgs(TRUE)[1])
 
 beta1list <- list(

@@ -1,6 +1,6 @@
-#For binary outcome and uncorrealted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method 
+#For binary outcome and uncorrealted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method
 output_path<-"/path_to_the_output_file/"
-output_file_name<-"snpD_0.01_"
+output_file_name<-"snpD_"
 index <- as.numeric(commandArgs(TRUE)[1])
 
 library(SKAT)
@@ -22,7 +22,7 @@ beta1list <- list(
 beta2list <- list(
   c(rep(0.9, 5), rep(0.75, 5), rep(0.5, 5), rep(0.25, 5), rep(0.1, 5)),
   c(rep(1.5, 5), rep(1.25, 5), rep(1, 5), rep(0.75, 5), rep(0.5, 5)),
-  c(rep(3, 5), rep(2.5, 5), rep(2, 5), rep(1.5, 5), rep(1, 5)) 
+  c(rep(3, 5), rep(2.5, 5), rep(2, 5), rep(1.5, 5), rep(1, 5))
 )
 
 result<-powerD_mean(n=2000,k=50,p=0.01,runs=100,list1=beta1list[[index]],list2=beta2list[[index]])
