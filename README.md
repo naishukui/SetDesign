@@ -1,1 +1,1 @@
-# SKATmultiallele
+# SetDesign
