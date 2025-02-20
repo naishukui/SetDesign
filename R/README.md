@@ -1,5 +1,5 @@
 
-# What is SKATmultiallele?
+# What is SetDesign?
 
 SKATmultiallele was designed for power calculation of Sequece Kernal
 Association Test (SKAT) when there are multi-allele positions exist.
@@ -9,7 +9,7 @@ alleles to calculate the power of SKAT test. The package can handle both
 linear and binary outcomes. For correlated SNPs, users can specify the
 correlation coefficient between SNPs for a more accurate result.
 
-# Why use SKATmultiallele?
+# Why use SetDesign?
 
 In many traditional ways of SKAT power calculation, multi-allelic
 position are often treated as single allele where only the first
