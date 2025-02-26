@@ -1,7 +1,7 @@
 
 # What is SetDesign?
 
-SKATmultiallele was designed for power calculation of Sequece Kernal
+SetDesign was designed for power calculation of Sequece Kernal
 Association Test (SKAT) when there are multi-allele positions exist.
 Users can specify the number of subjects, SNPs and the minor allele
 frequency, significance level and effect size of both alternative
@@ -26,7 +26,7 @@ genotype matrix.
 We show an example with binary outcomes and correlated SNPs
 
 ``` r
-library(SKATmultiallele)
+library(SetDesign)
 
 # Set number of  SNPs
 kk = 50
