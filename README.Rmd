@@ -11,12 +11,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# What is SKATmultiallele?
+# What is SetDesign?
 
 SKATmultiallele was designed for power calculation of Sequece Kernal Association Test (SKAT)  when multi-allelic positions are present. Users can specify parameters such as the number of subjects, SNPs and the minor allele frequencies, significance level and effect size of both alternative alleles to compute the power of SKAT test. The package supports both linear and binary outcomes and accounts for correlated SNPs by specifying a correlation coefficient for more precise results.
 
 
-# Why use SKATmultiallele?
+# Why use SetDesign?
 
 Traditional methods for SKAT power calculations often oversimplify multi-allelic positions by treating them as single alleles—either considering only the first alternative allele or combining the first and second alternative alleles in a simplified manner. SKATmultiallele highlights the differences in power calculations when these positions are treated individually versus when they are combined.
 
@@ -27,7 +27,7 @@ Additionally, the package builds on and improves the power calculation method fr
 We show an example with binary outcomes and correlated SNPs.
 
 ```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
-library(SKATmultiallele)
+library(SetDesign)
 
 # Set number of  SNPs
 kk = 50
