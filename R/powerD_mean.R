@@ -1,6 +1,6 @@
 #' powerD_meanCor.R
-#' For binary outcome and uncorrelated genotypes, calculate simulated power for combined and separated models using SKAT,
-#' and also calculate the theoretical power using  Lee's method for true model and misspecified model
+#' For binary outcome and uncorrelated genotypes, calculate simulated power for true and misspecified models using SKAT,
+#'  and also calculate the analytical power using  Lee's method for both true model and misspecified model
 #' @importFrom bindata bincorr2commonprob commonprob2sigma rmvbin
 #' @importFrom stats dbeta rnorm qchisq pchisq rbinom
 #' @importFrom SKAT SKAT_Null_Model

@@ -1,6 +1,6 @@
 #' powerD_meanCor.R
-#' For binary outcome and correlated genotypes, calculate simulated power for combined and separated models using SKAT,
-#' and also calculate the theoretical power using  Lee's method for both true model and misspecified model
+#' For binary outcome and correlated genotypes, calculate simulated power for true and misspecified models using SKAT,
+#'  and also calculate the analytical power using  Lee's method for both true model and misspecified model
 #' @importFrom bindata bincorr2commonprob commonprob2sigma rmvbin
 #' @importFrom stats dbeta rnorm qchisq pchisq rbinom
 #' @importFrom SKAT  SKAT_Null_Model
@@ -14,8 +14,8 @@
 #' @param list1 Vector of effect sizes for the first alternative allele in the multi-allelic position.
 #' @param list2 Vector of effect sizes for the second alternative allele in the multi-allelic position.
 #'
-#' @return \code{powerE,powerSeparated,powerCombined}:Vector of three powers for SKAT test.
-#'
+#' @return \code{powerE,powerE2,powerSeparated,powerCombined}:Vector of four powers for SKAT test: analytical power and simulated power
+#' for true model(using original SKAT power calculation) and misspecified model#'
 #' @export
 #' @examples
 #' beta1=-0.5
