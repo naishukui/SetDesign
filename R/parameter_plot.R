@@ -1,10 +1,10 @@
-# supplementary figure 2
-# compare parameter in true model beta1 and beta2 for multi-allelic variants to parameters in misspecified model
-# alpha1 for uncorrealted genotypes and alpha2 for correlated genotypes
+# supplementary figure 1
+# compare parameters in true model beta1 and beta2 for multi-allelic variants to parameters in misspecified model
+# alpha1 for uncorrelated genotypes and alpha2 for correlated genotypes
 library(ggplot2)
 library(tidyr)
 library(RColorBrewer)
-
+library(rootSolve)
 
 # Define the vectors
 beta1 <- c(-0.9, -0.75, -0.5, -0.25, -0.1,
@@ -38,11 +38,11 @@ data_long <- pivot_longer(
 
 # Define Greek labels for the legend
 variable_labels <- c(
-  beta1 = expression(beta[1]),
-  beta2 = expression(beta[2]),
-  alpha1 = expression(alpha[1]),
-  alpha2 = expression(alpha[2])
-)
+  beta1 = expression(beta[49]),
+  beta2 = expression(beta[50]),
+  alpha1 = expression(alpha[49]),
+  alpha2 = expression(alpha[49] * "'")
+  )
 
 ggplot(data_long, aes(x = Index, y = Value, color = Variable)) +
   geom_line() +
@@ -51,7 +51,7 @@ ggplot(data_long, aes(x = Index, y = Value, color = Variable)) +
   facet_wrap(
     ~ Group,
     scales = "free_x",
-    labeller = label_bquote(beta[2] == .(Group))
+    labeller = label_bquote(beta[50] == .(Group))
   ) +
   # Use default discrete color scale, remove legend title, but keep Greek labels
   scale_color_discrete(
@@ -62,7 +62,7 @@ ggplot(data_long, aes(x = Index, y = Value, color = Variable)) +
   labs(
     title = expression("Parameters in True Models and Misspecified Models"),
     x = NULL,       # remove the x-axis label
-    y = "Values"
+    y = "Effect Size"
   ) +
   # theme_classic() to remove grid lines; then tweak strips and x-axis
   theme_classic(base_size = 13) +

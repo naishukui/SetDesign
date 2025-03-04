@@ -1,4 +1,5 @@
-#For continuous outcome and correalted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method
+# For continuous outcome and correlqted genotypes, simulate the power for true and misspecified  models using SKAT,
+# and also calculate the analytical power using  Lee's method
 
 library(SKAT)
 library(bindata)

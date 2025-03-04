@@ -96,7 +96,7 @@ true_mu <- function(g1,g2) {
 
 residual_fun <- function(par, extra=NULL) {
   alpha0 <- par[1]  # alpha0
-  alpha1  <- par[2]  # alpha
+  alpha1  <- par[2]  # alpha1
 
   #  compute E[Y] and E[G * Y], using the TRUE model
   #         E[Y] = sum_{g1,g2} mu(...) * prob(g1,g2)

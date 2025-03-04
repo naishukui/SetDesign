@@ -2,7 +2,7 @@
 #' calculate the  theoretical power for SKAT test for binary outcome, uncorrelated genotypes
 #' @importFrom bindata bincorr2commonprob commonprob2sigma rmvbin
 #' @importFrom stats dbeta rnorm qchisq pchisq rbinom
-#' @importFrom SKAT SKAT SKAT_Null_Model
+#' @importFrom SKAT  SKAT_Null_Model
 #' @param kk Number of SNPs.
 #' @param n Number of subjects.
 #' @param p Minor allele frequency.
@@ -10,7 +10,7 @@
 #' @param list1 Vector of effect sizes for the first alternative allele in  multi-allelic position.
 #' @param list2 Vector of effect sizes for the second alternative allele in  multi-allelic position.
 #'
-#' @return \code{power}:Vector of derived power for SKAT test.
+#' @return \code{power}:Vector of derived power for SKAT test using our own method without heavy simulation.
 #'
 #' @export
 #' @examples

@@ -1,4 +1,4 @@
-# supplemental figure 1
+# supplemental figure
 # compare calculated power and simulated power for true and misspecified models in four settings,
 # binary/continuous outcomes and uncorrelated/correlated genotypes
 

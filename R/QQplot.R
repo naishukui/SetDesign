@@ -1,4 +1,5 @@
-#this code generates QQ plot for  STAAR pipeline results under different configurations
+#this code generates QQ plot for  STAAR pipeline results under different settings
+
 library(ggplot2)
 library(dplyr)
 
@@ -15,6 +16,7 @@ datasets <- list(
   setting3 = get(load("output_file3.R")),
   setting4 = get(load("output_file4.R")),
   setting5 = get(load("output_file5.R"))
+  setting5 = get(load("output_file6.R"))
 )
 
 # Initialize an empty data frame to store QQ plot values for all datasets

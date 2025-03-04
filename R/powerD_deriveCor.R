@@ -11,7 +11,7 @@
 #' @param list1 Vector of effect sizes for the first alternative allele in  multi-allelic position.
 #' @param list2 Vector of effect sizes for the second alternative allele in  multi-allelic position.
 #'
-#' @return \code{power}:Vector of derived power for SKAT test.
+#' @return \code{power}:Vector of derived power for SKAT test using our own method without heavy simulation.
 #'
 #' @export
 #' @examples

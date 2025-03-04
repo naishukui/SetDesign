@@ -1,4 +1,6 @@
-#For binary outcome and uncorrealted genotypes, simulate the power combined and seperated modles using SKAT, and also calculate the theoretical power using  Lee's method
+# For binary outcome and uncorrelated genotypes, simulate the power for true and misspecified  models using SKAT,
+# and also calculate the analytical power using  Lee's method
+
 output_path<-"/path_to_the_output_file/"
 output_file_name<-"snpD_"
 index <- as.numeric(commandArgs(TRUE)[1])
