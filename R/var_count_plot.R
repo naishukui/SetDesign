@@ -1,4 +1,4 @@
-# this code generates manhattan plots under default and final settings
+# this code generates plots comparing number of variants under different STAAR settings
 library(qqman)
 library(dplyr)
 library(STAAR)
