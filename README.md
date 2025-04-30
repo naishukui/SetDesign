@@ -1,7 +1,7 @@
 # SetDesign
 SetDesign was designed for power and bias calculation of Sequece Kernal Association Test (SKAT)  when multi-allelic positions are present. Users can specify parameters such as the number of subjects, SNPs and the minor allele frequencies, significance level and effect size of both alternative alleles to compute the power of SKAT test. The package supports both linear and binary outcomes and accounts for correlated SNPs by specifying a correlation coefficient for more precise results.
 
-## Minimal Reporting Checklist for Set-Based Genetic Association Tests
+## Reporting Checklist for Set-Based Genetic Association Tests
 
 To improve clarity and reproducibility of set-based test results, we recommend reporting at least the following data processing and analysis choices in the methods section:
 
