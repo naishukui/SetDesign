@@ -23,7 +23,7 @@ To improve clarity and reproducibility of set-based test results, we recommend r
 * **Set Definition Criteria:**
     * How were the boundaries of the variant sets defined? (e.g., specific gene coordinates from a reference genome build, gene coordinates +/- X kb upstream/downstream, predefined genomic regions)
     * If functional annotations were used to select variants for sets (e.g., "coding variants", "LoF variants", "regulatory variants"):
-        * Which annotation source and version was used (e.g., VEP v105, ANNOVAR YYYY-MM-DD)?
-        * What specific annotation categories/terms (e.g., VEP consequences like `stop_gained`, `missense_variant`, `synonymous_variant`, `frameshift_variant`, `inframe_deletion`, `splice_acceptor_variant`, `splice_donor_variant`, etc.) were included in the definition for each set type?
+        * Which annotation source and version was used?
+        * What specific annotation categories/terms were included in the definition for each set type?
 
 *Reporting these specific choices clearly will help others understand exactly how the analysis was performed and aid in reproducing or comparing results across studies.*
