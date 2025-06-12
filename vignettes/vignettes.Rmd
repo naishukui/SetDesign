@@ -29,7 +29,7 @@ The package supports both linear and binary outcomes, making it versatile for a 
 
 
 
-## Instructions for SKATmultiallel Functions
+## Instructions for SetDesign Functions
 The figures in simulation part can be generated following the steps here.
 
 
