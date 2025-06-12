@@ -1,16 +1,20 @@
-Package: SKATmultiallele
-Title: Power of SKAT for Multi-allelic positions 
+Package: SetDesign
+Title: Power and Bias Calculation of SKAT for Multi-allelic positions 
 Version: 0.0.0.9000
 Authors@R: 
     person("Naishu", "Kui", , "kuinaishu@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: The package calculates power for Sequence Kernel Association Test (SKAT)  when mutli-allelic positions exist. 
-License: GPL (>= 3)
+           comment = c(ORCID = "0000-0001-6091-9906"))
+Description: The package calculates power and bias for Sequence Kernel Association Test (SKAT)  when mutli-allelic positions exist. 
+License: GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
 Imports: 
     bindata,
+    mvtnorm,
+    nleqslv,
+    rje,
+    rootSolve,
     SKAT,
     stats
 Suggests: 
