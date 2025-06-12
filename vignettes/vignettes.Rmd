@@ -1,5 +1,5 @@
 ---
-title: "SKATmultiallele Vignette"
+title: "SetDesign Vignette"
 author: Naishu Kui
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -11,7 +11,7 @@ vignette: >
 
 ## Introduction
 
-**SKATmultiallele** is an R package designed to calculate the power of the Sequence Kernel Association Test (SKAT) when multi-allelic positions are present. It compares the simulated power between:
+**SetDesign** is an R package designed to calculate the power of the Sequence Kernel Association Test (SKAT) when multi-allelic positions are present. It compares the simulated power between:
 
 - **Separated Model**: Treating multi-allelic positions as two distinct SNPs.\
 - **Combined Model**: Treating multi-allelic positions as a single combined SNP.\
