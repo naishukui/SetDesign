@@ -4,15 +4,14 @@
 #' this could be used to check our direct solution from bias_linear()
 #' @param beta_list A list containing beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects).
 #' @param cov_mat_list A list of covariance matrices:
-#'                    - mu_XX: E[XXᵀ]
-#'                    - mu_X_tildeG: E[XG̃ᵀ]
-#'                    - mu_XG: E[XGᵀ]
-#'                    - mu_tildeG_tildeG: E[G̃G̃ᵀ]
-#'                    - mu_tildeG_G: E[G̃Gᵀ]
+#'                    - mu_XX:
+#'                    - mu_X_tildeG
+#'                    - mu_XG
+#'                    - mu_tildeG_tildeG
+#'                    - mu_tildeG_G
 #' @param mu_list A list containing mu_X (mean of X).
 #'
 #' @return A list with solutions for α₀, α_x, and α_G.
-#'
 #' @export
 #' @examples
 #' # Example inputs (replace with actual data)
@@ -23,8 +22,7 @@
 #'   mu_X_tildeG = matrix(c(0.1, 0.2, 0.3, 0.4), nrow = 2),
 #'   mu_XG = matrix(c(0.5, 0.6, 0.7, 0.8), nrow = 2),
 #'   mu_tildeG_tildeG = matrix(c(1, 0.5, 0.5, 1), nrow = 2),
-#'   mu_tildeG_G = matrix(c(0.9, 0.8, 0.7, 0.6), nrow = 2)
-#' )
+#'   mu_tildeG_G = matrix(c(0.9, 0.8, 0.7, 0.6), nrow = 2))
 #' result <- bias_linear_nleqslv(beta_list, cov_mat_list, mu_list)
 #' print(result)
 

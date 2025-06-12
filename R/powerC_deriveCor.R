@@ -1,7 +1,8 @@
 #' powerC_deriveCor.R
 #' calculate theoretical power for SKAT test for continuous outcome, correlated genotypes
 #' @importFrom bindata bincorr2commonprob commonprob2sigma rmvbin
-#' @importFrom stats dbeta rnorm qchisq pchisq rbinom
+#' @importFrom stats dbeta rnorm qchisq pchisq rbinom qnorm
+#' @importFrom mvtnorm pmvnorm
 #' @importFrom SKAT SKAT SKAT_Null_Model
 #' @param k Number of SNPs.
 #' @param n Number of subjects.
@@ -18,7 +19,7 @@
 #' beta1<-c(-0.9, -0.75, -0.5, -0.25, -0.1)
 #' beta2<-c(rep(0.5, 5))
 #' powerC_deriveCor(k=10,n=2000,alpha=0.05,p=0.01,rho=0.1,list1=beta1,list2=beta2)
-#' # Should return 0.9940751 0.9611623 0.7586143 0.5327757 0.5094261
+#' # Should return 0.9940736 0.9611341 0.7585572 0.5327774 0.5094248
 
 powerC_deriveCor<-function(k,n,alpha,p,rho,list1,list2) {
   power<-c()
@@ -42,13 +43,14 @@ powerC_deriveCor<-function(k,n,alpha,p,rho,list1,list2) {
     a=(rho*2*p*(1-p))^2
 
     # b=E(G11^2*G12*G13)
-    b<-2 * (1 - 2*p) * Phi3 + 2 * rho * p^3 * (1 - p) - 4 * (1 - 2*p) * rho * p^2 * (1 - p)- 2 * (1 - 2*p) * p^3
+    b<-2 * (1 - 2*p) * Phi3 + 2 * rho * p^3 * (1 - p) - 4 * (1 - 2*p) * rho * p^2 * (1 - p)- 2 * (1 - 2*p) * p^3+4 * (rho * p * (1 - p))^2
 
     # c=E(G11^2*G21*G22)
     c=rho*(2*p*(1-p))^2
 
     # d=E(G11^2*G12^2)
-    d=4 * p^2 * (1 - p)^2 + 2 * rho * p * (1 - p) * (1 - 2*p)^2
+    #d=4 * p^2 * (1 - p)^2 + 2 * rho * p * (1 - p) * (1 - 2*p)^2
+    d= 2 * (1 - 2*p)^2 * rho * p * (1 - p) + (4 + 4*rho^2) * p^2 * (1 - p)^2
 
     # e=E(G11^2*G21^2)
     e=4*p^2*(1-p)^2

@@ -21,7 +21,7 @@
 #' beta1=-0.5
 #' beta2=0.75
 #' powerD_meanCor(k=10,n=2000,alpha=0.05,p=0.1,rho=0.1,runs=10,list1=beta1,list2=beta2)
-#' Should return powerE= 0.9998875,powerE=0.4020847, powerSeparated=1,powerCombined=0.8
+#' # Should return powerE= 0.9998875,powerE=0.4020847, powerSeparated=1,powerCombined=0.8
 
 powerD_meanCor<-function(k,n,alpha,p,rho, runs,list1,list2){
   skat1=skat2=sig1=sig2<-c()

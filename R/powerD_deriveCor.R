@@ -10,9 +10,7 @@
 #' @param alpha Significance level.
 #' @param list1 Vector of effect sizes for the first alternative allele in  multi-allelic position.
 #' @param list2 Vector of effect sizes for the second alternative allele in  multi-allelic position.
-#'
 #' @return \code{power}:Vector of derived power for SKAT test using our own method without heavy simulation.
-#'
 #' @export
 #' @examples
 #' beta1<-c(-0.9, -0.75, -0.5, -0.25, -0.1)
@@ -25,8 +23,7 @@ powerD_deriveCor<-function(kk,n,alpha,p,rho,list1,list2) {
   k1=kk-1
   k2=kk
   alpha0=-1
-  pi_0=exp(alpha0)/(1+exp(alpha0))　
-
+  pi_0=exp(alpha0)/(1+exp(alpha0))
   for (ii in 1:length(list1)){
     #effect sizes for each SNPs
     beta<-c(rep(0,kk-2),list1[ii], list2[ii])

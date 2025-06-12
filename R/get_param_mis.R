@@ -1,6 +1,7 @@
 #' get_param_mis.R
 #' For binary outcome, calculate parameter for misspecified model given parameter of the true model
-#' @importFrom rootSolve
+#' @importFrom stats setNames
+#' @importFrom rootSolve multiroot
 #' @param cor correlated genoyypes or not.
 #' @param rho Correlation coefficient between SNPs.
 #' @param p Minor allele frequency.
@@ -14,8 +15,8 @@
 #' @examples
 #' beta1list=c(-0.9, -0.5)
 #' beta2list=c(0.9,0.9)
-#' get_param_mis(cor=T,p=0.05,rho=0.15,beta1list,beta2list)
-#' Should return alpha0=c(-0.9735817, -0.9858034),alpha1=c(0.1056052,0.2539339)
+#' get_param_mis(cor=TRUE,p=0.05,rho=0.15,beta1list,beta2list)
+#' # Should return alpha0=c(-0.9735817, -0.9858034),alpha1=c(0.1056052,0.2539339)
 
 
 get_param_mis<-function(cor,p,rho,beta1list,beta2list){
@@ -41,7 +42,7 @@ pairs <- expand.grid(g1 = G_vals, g2 = G_vals, KEEP.OUT.ATTRS=FALSE)
 pairs$prob <- mapply(function(x,y) {
   G_probs[as.character(x)] * G_probs[as.character(y)]
 }, x = pairs$g1, y = pairs$g2)
-if (cor==T){
+if (cor==TRUE){
 #when G1, G2 are correlated
 # conditional probability for correlated SNPs P(G11|G12=0)
 p0_0=(1-p+rho*p)^2
@@ -96,7 +97,7 @@ true_mu <- function(g1,g2) {
 
 residual_fun <- function(par, extra=NULL) {
   alpha0 <- par[1]  # alpha0
-  alpha1  <- par[2]  # alpha1
+  alpha1  <- par[2]  # alpha
 
   #  compute E[Y] and E[G * Y], using the TRUE model
   #         E[Y] = sum_{g1,g2} mu(...) * prob(g1,g2)

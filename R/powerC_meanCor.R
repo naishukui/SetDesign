@@ -47,7 +47,7 @@ powerC_meanCor<-function(k,n,alpha,p,rho,runs,list1,list2){
       # combine the last two alleles and assume they are from the same multi-allelic position
       last <- G[, k-1] + G[, k]
       last[last > 2] <- 2
-      # construct correalted G2 matrix in combined model
+      # construct correlated G2 matrix in combined model
       G2 <- cbind(G[,1:(k-2)], last)
       #effect sizes true model
       beta<-c(rep(0,k-2),list1[ii], list2[ii])

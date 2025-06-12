@@ -20,7 +20,7 @@
 #' beta1=-0.5
 #' beta2=0.75
 #' powerC_mean(k=10,n=200,alpha=0.05,p=0.1,runs=10,list1=beta1,list2=beta2)
-#' Should return powerE=0.988, powerE2=0.123676, powerSeparated=1,powerCombined=0.2
+#' # Should return powerE=0.988, powerE2=0.123676, powerSeparated=1,powerCombined=0.2
 powerC_mean<-function(n,k,alpha,p,runs,list1,list2){
   skat1=skat2=sig1=sig2<-c()
   sig <- matrix(0, nrow = length(list1), ncol = 2)

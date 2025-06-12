@@ -19,7 +19,7 @@
 #' beta1=-0.5
 #' beta2=0.75
 #' powerD_mean(k=10,n=2000,alpha=0.05,p=0.1,runs=10,list1=beta1,list2=beta2)
-#' Should return powerE= 0.9999946, powerE2=0.4200632,powerSeparated=1,powerCombined=0.3
+#' # Should return powerE= 0.9999946, powerE2=0.4200632,powerSeparated=1,powerCombined=0.3
 powerD_mean<-function(k,n,alpha,p,runs,list1,list2){
 
   skat1=skat2=sig1=sig2<-c()

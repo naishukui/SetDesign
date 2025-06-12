@@ -1,6 +1,7 @@
 #' bias_logistic_sim .R
 #' this function simulates the above setting so that we can check to make the
 #' solver code bias_logistic_nleqslv() is working correctly.
+#' @importFrom stats binomial glm  rmultinom
 #' @param betaVec is a 3*1 vector of the true coefficients (intercept, minor allele 1, minor allele 2)
 #' @param probVec is a 3*1 vector of the probabilities of each of the three alleles (major allele, minor 1, minor 2)
 #' @param nSubs is the number of subjects to use in simulation
