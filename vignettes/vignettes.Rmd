@@ -27,37 +27,6 @@ Users can customize parameters such as:
 
 The package supports both linear and binary outcomes, making it versatile for a wide range of genetic studies.
 
-
-
-## Instructions for SetDesign Functions
-The figures in simulation part can be generated following the steps here.
-
-
-### Step 1
-
-Submit batch job for snpC.R,snpCcor.R,snpD.R amd snpDcor.R. to get the simulation results for simulated power and theoretical power based on Lee's method.
-Submit batch jobs for the following scripts to generate simulation results for both simulated and theoretical power:
-
-- `snpC.R`: Linear outcomes without correlation.\
-- `snpCcor.R`: Linear outcomes with correlation.\
-- `snpD.R`: Binary outcomes without correlation.\
-- `snpDcor.R`: Binary outcomes with correlation.\
-
-Key parameters for these scripts:
-- `n`: Total number of subjects.\
-- `k`: Total number of SNPs.\
-- `rho`: Correlation coefficient between SNPs.\
-- `list1`: Vector of genetic effect sizes for the first alternative allele.\
-- `list2`: Vector of genetic effect sizes for the second alternative allele.\
-
-
-### Step 2
-
-Run `results.R` to:
-- Calculate theoretical power using the new method developed in this package.
-- Generate plots comparing the four different power calculation methods across various effect size combinations.
-
-
 Suppose we want to calculate the power of the SKAT test for a binary outcome, assuming correlated SNPs and one multi-allelic position among `kk` SNPs.
 
 ```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
