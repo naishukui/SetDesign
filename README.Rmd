@@ -25,7 +25,7 @@ Additionally, the package builds on and improves the power calculation method fr
 # Example
 
 We show an example with binary outcomes and correlated SNPs.
-
+```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
 # Set number of  SNPs
 kk = 50
 
@@ -58,7 +58,7 @@ Next we show how to get the parameters in misspecifed model  given the parameter
 For binary outcomes, we do as follows.
 
 # Example
-
+```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
 #Set the true coefficients (intercept, minor allele 1, minor allele 2)
 betaVec = c(-1, -0.5, 1)
 
@@ -67,11 +67,11 @@ probVec=c(0.98, 0.01, 0.01)
 
 #get a List containing solved coefficients (alpha0, alphaG) for misspecified model
 bias_logistic_nleqslv(betaVec = c(-1, -0.5, 1), probVec=c(0.98, 0.01, 0.01))$x
-
+```
 For linear outcomes
 
 # Example
-
+```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
 #set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
 beta_list <- list(beta_0 = 1, beta_X = c(0.5, -0.3), beta_G = c(0.2, 0.4))
 #set  mu_X (mean of X)
@@ -86,4 +86,4 @@ mu_list <- list(mu_X = c(2, 1.5))
 
 #get A list with solutions for α₀, α_x, and α_G
 bias_linear_nleqslv(beta_list, cov_mat_list, mu_list)
-
+```
