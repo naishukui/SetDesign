@@ -59,6 +59,7 @@ For binary outcomes, we do as follows.
 
 # Example
 ```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
+
 #Set the true coefficients (intercept, minor allele 1, minor allele 2)
 betaVec = c(-1, -0.5, 1)
 
@@ -74,8 +75,10 @@ For linear outcomes
 ```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
 #set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
 beta_list <- list(beta_0 = 1, beta_X = c(0.5, -0.3), beta_G = c(0.2, 0.4))
+
 #set  mu_X (mean of X)
 mu_list <- list(mu_X = c(2, 1.5))
+
 #set cov_mat_list : A list of covariance matrices
  cov_mat_list <- list(
    mu_XX = matrix(c(5, 3, 3, 4), nrow = 2),
