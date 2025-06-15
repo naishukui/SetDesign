@@ -54,8 +54,6 @@ Next we show how to get the parameters in misspecifed model  given the parameter
 
 For binary outcomes, we do as follows.
 
-# Example
-
 ``` r
 
 #Set the true coefficients (intercept, minor allele 1, minor allele 2)
@@ -68,8 +66,6 @@ probVec=c(0.98, 0.01, 0.01)
 bias_logistic_nleqslv(betaVec = c(-1, -0.5, 1), probVec=c(0.98, 0.01, 0.01))$x
 ```
 For linear outcomes
-
-# Example
 
 ```r
 #set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
