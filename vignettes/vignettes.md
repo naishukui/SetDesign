@@ -2,19 +2,36 @@
 
 # What is SetDesign?
 
-SetDesign was designed to study the impact of potential data processing choices at study design stages by performing power and bias calculation of Sequece Kernal Association Test (SKAT)  when multi-allelic positions are present. Users can specify parameters such as the number of subjects, SNPs and the minor allele frequencies, significance level and effect size of both alternative alleles to compute the power of SKAT test. The package supports both linear and binary outcomes and accounts for correlated SNPs by specifying a correlation coefficient for more precise results.
+SetDesign was designed to study the impact of potential data processing choices at study design stages by performing power and bias calculation of Sequece Kernal Association Test (SKAT)  when multi-allelic positions are present. The package supports both linear and binary outcomes and accounts for correlated SNPs by specifying a correlation coefficient for more precise results.
+
+
+ It compares the simulated and analytical power and bias between:
+
+- **True Model**: account for two alternative allelesfor  tri-allelic loci.\
+- **Misspecified Model**: Treating tri-allelic loci as a bi-allelic loci.\
+
+The package also developed a more efficient method for analystical power calculation based on the original power calculation for SKAT by Lee et al, making power calculatin more efficient and versatile. 
+
+Users can customize parameters such as:
+
+- Number of subjects and SNPs.\
+- Correlation between SNPs.\
+- Significance level for the SKAT test.\
+- Effect sizes of the two alternative alleles.\
+
+
 
 
 # Why use SetDesign?
 
-Traditional methods for SKAT power calculations often oversimplify multi-allelic positions by treating them as single alleles—either considering only the first alternative allele or combining the first and second alternative alleles in a simplified manner. SetDesign highlights the differences in power calculations when these positions are treated individually versus when they are combined.
+Traditional methods for SKAT power calculations often oversimplify multi-allelic positions by treating them as single alleles—either considering only the first alternative allele or combining the first and second alternative alleles in a simplified manner. SetDesign highlights the differences in power and effect size estimation when these positions are treated individually versus when they are combined.
 
 Additionally, the package builds on and improves the power calculation method from Lee et al.'s paper, significantly reducing computational complexity by directly specifying the correlation structure of the genotype matrix.
 
 
 # Example
 
-We show an example with binary outcomes and correlated SNPs
+Suppose we want to calculate the power of the SKAT test for a binary outcome, assuming correlated SNPs and one multi-allelic position among `kk` SNPs.
 
 ``` r
 library(SetDesign)
@@ -52,7 +69,7 @@ powerD_derive(kk,n,p,alpha,list1,list2)
 
 Next we show how to get the parameters in misspecifed model  given the parameters in true models, showing the bias resulted from model misspecificatoin where tri-allelic variants are treated as bi-allelic. 
 
-For binary outcomes, we do as follows.
+Suppose we have the effect sizes and allele frequencies for true model, we can estimate the bias in effect size estimation in misspecifed model. For binary outcomes: 
 
 ``` r
 
@@ -65,7 +82,7 @@ probVec=c(0.98, 0.01, 0.01)
 #get a List containing solved coefficients (alpha0, alphaG) for misspecified model
 bias_logistic_nleqslv(betaVec = c(-1, -0.5, 1), probVec=c(0.98, 0.01, 0.01))$x
 ```
-For linear outcomes
+For linear outcomes: 
 
 ```r
 #set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
