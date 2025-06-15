@@ -14,10 +14,10 @@ The package also developed a more efficient method for analystical power calcula
 
 Users can customize parameters such as:
 
-- Number of subjects and SNPs.\
-- Correlation between SNPs.\
-- Significance level for the SKAT test.\
-- Effect sizes of the two alternative alleles.\
+- Number of subjects and SNPs.
+- Correlation between SNPs.
+- Significance level for the SKAT test.
+- Effect sizes of the two alternative alleles.
 
 
 
