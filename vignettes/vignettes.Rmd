@@ -4,7 +4,7 @@ author: Naishu Kui
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{SKATmultiallele Vignette}
+  %\VignetteIndexEntry{SetDesign Vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -30,7 +30,7 @@ The package supports both linear and binary outcomes, making it versatile for a 
 Suppose we want to calculate the power of the SKAT test for a binary outcome, assuming correlated SNPs and one multi-allelic position among `kk` SNPs.
 
 ```{r k2, eval = T, echo=TRUE, warning = FALSE, message = FALSE, error = FALSE}
-library(SKATmultiallele)
+library(SetDesign)
 
 # Set number of  SNPs
 kk = 50
