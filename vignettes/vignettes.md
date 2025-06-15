@@ -7,8 +7,8 @@ SetDesign was designed to study the impact of potential data processing choices 
 
  It compares the simulated and analytical power and bias between:
 
-- **True Model**: account for two alternative allelesfor  tri-allelic loci.\
-- **Misspecified Model**: Treating tri-allelic loci as a bi-allelic loci.\
+- **True Model**: account for two alternative allelesfor  tri-allelic loci.
+- **Misspecified Model**: Treating tri-allelic loci as a bi-allelic loci.
 
 The package also developed a more efficient method for analystical power calculation based on the original power calculation for SKAT by Lee et al, making power calculatin more efficient and versatile. 
 
