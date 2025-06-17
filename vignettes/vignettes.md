@@ -2,36 +2,30 @@
 
 # What is SetDesign?
 
-SetDesign was designed to study the impact of potential data processing choices at study design stages by performing power and bias calculation of Sequece Kernal Association Test (SKAT)  when multi-allelic positions are present. The package supports both linear and binary outcomes and accounts for correlated SNPs by specifying a correlation coefficient for more precise results.
+SetDesign was developed to assess the impact of data processing choices at the study design stage of genome-wide association studies (GWAS). It focuses on misspecified models, which can arise due to differences in data pipeliens. The package performs power calculations for the sequence kernel association test (SKAT) or bias calculations for estimated regression coefficients. The package supports both continuous and binary outcomes and can account for correlated SNPs.
 
+ SetDesign can perform both simulation and analytical calculations for power and bias between:
 
- It compares the simulated and analytical power and bias between:
+- **True Model**: (e.g. modeling a tri-allelic variant with two terms)
+- **Misspecified Model**: (e.g. modeling a tri-allelic variant with only one term)
 
-- **True Model**: account for two alternative allelesfor  tri-allelic loci.
-- **Misspecified Model**: Treating tri-allelic loci as a bi-allelic loci.
-
-The package also developed a more efficient method for analystical power calculation based on the original power calculation for SKAT by Lee et al, making power calculatin more efficient and versatile. 
+The package also introduces a more computationally efficient method for analytical power calculation that does not require actual genotype matrices or bootstraping a full model.
 
 Users can customize parameters such as:
 
 - Number of subjects and SNPs.
 - Correlation between SNPs.
 - Significance level for the SKAT test.
-- Effect sizes of the two alternative alleles.
-
-
+- Effect sizes of alleles.
 
 
 # Why use SetDesign?
 
-Traditional methods for SKAT power calculations often oversimplify multi-allelic positions by treating them as single alleles—either considering only the first alternative allele or combining the first and second alternative alleles in a simplified manner. SetDesign highlights the differences in power and effect size estimation when these positions are treated individually versus when they are combined.
-
-Additionally, the package builds on and improves the power calculation method from Lee et al.'s paper, significantly reducing computational complexity by directly specifying the correlation structure of the genotype matrix.
-
+Researchers make many important - but often unreported - data processing choices in set-based genetic association analysis. These choices can greatly affect the stability and reproducibility of set-based results. SetDesign helps researchers easily understand the (potentiall) large impacts of their choices at the start of their study.
 
 # Example
 
-Suppose we want to calculate the power of the SKAT test for a binary outcome, assuming correlated SNPs and one multi-allelic position among `kk` SNPs.
+Suppose we want to calculate the power of the SKAT test for a binary outcome. Assume we are interested in the situation where there are `kk=50` total SNPs and `n=2000` subjects. Assume further that we want to consider the setting where the one true causal SNP is a tri-allelic SNP where both non-reference alleles have a non-zero effect. However, we misspecify the model by modeling the causal SNP as a single covariate and simply summing the number of non-reference alleles. 
 
 ``` r
 library(SetDesign)
@@ -45,47 +39,39 @@ n = 2000
 # Set significance level
 alpha = 0.05
 
-# Set correlation coefficient between SNPs
-rho = 0.15
-
 # Set minor allele frequency
 p = 0.01
 
-# Set effect sizes of the first alternative allele
+# Set true effect sizes of the first alternative allele
 list1=c(-0.1,-0.25,-0.5,-0.75,-0.9)
 
-# Set effect sizes of the second alternative allele
+# Set true effect sizes of the second alternative allele
 list2=c(rep(0.5,5))
 
-# Pairwise correlation
-rho = 0.1
-
-# get the power for SKAT test
+# get the power for SKAT test under the misspecified
 powerD_derive(kk,n,p,alpha,list1,list2)
 #> [1] 0.08653423 0.09248395 0.11143999 0.13961267 0.15997840
 ```
 
 
-
-Next we show how to get the parameters in misspecifed model  given the parameters in true models, showing the bias resulted from model misspecificatoin where tri-allelic variants are treated as bi-allelic. 
-
-Suppose we have the effect sizes and allele frequencies for true model, we can estimate the bias in effect size estimation in misspecifed model. For binary outcomes: 
+Next we consider model misspecification. We show how to get the regression coefficient estimates of in the misspecified model when tri-allelic variants are treated as bi-allelic. 
+ For binary outcomes: 
 
 ``` r
 
-#Set the true coefficients (intercept, minor allele 1, minor allele 2)
+# Set the true coefficients (intercept, coefficient 1, coefficient 2)
 betaVec = c(-1, -0.5, 1)
 
-#Set the probabilities of each of the three alleles (major allele, minor 1, minor 2)
+# Set the probabilities of each of the three alleles (reference allele, effect alelle 1, effect allele 2)
 probVec=c(0.98, 0.01, 0.01)
 
-#get a List containing solved coefficients (alpha0, alphaG) for misspecified model
+# return a list containing solved coefficients (alpha0, alphaG) for misspecified model
 bias_logistic_nleqslv(betaVec = c(-1, -0.5, 1), probVec=c(0.98, 0.01, 0.01))$x
 ```
 For linear outcomes: 
 
 ```r
-#set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
+# set beta_0 (intercept), beta_X (covariate effects), beta_G (genetic effects)
 beta_list <- list(beta_0 = 1, beta_X = c(0.5, -0.3), beta_G = c(0.2, 0.4))
 
 #set  mu_X (mean of X)
