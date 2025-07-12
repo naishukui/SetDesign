@@ -2,9 +2,9 @@
 
 # What is SetDesign?
 
-SetDesign was developed to assess the impact of data processing choices at the study design stage of genome-wide association studies (GWAS). It focuses on misspecified models, which can arise due to differences in data pipeliens. The package performs power calculations for the sequence kernel association test (SKAT) or bias calculations for estimated regression coefficients. The package supports both continuous and binary outcomes and can account for correlated SNPs.
+SetDesign was developed to assess the impact of data processing choices at the study design stage of genome-wide association studies (GWAS). It focuses on misspecified models, which can arise due to differences in data pipelines. The package performs power calculations for the sequence kernel association test (SKAT) or bias calculations for estimated regression coefficients when models are misspecified. The package supports both continuous and binary outcomes and can account for correlated SNPs.
 
- SetDesign can perform both simulation and analytical calculations for power and bias between:
+ SetDesign can perform both simulated and analytical calculations for power and bias between:
 
 - **True Model**: (e.g. modeling a tri-allelic variant with two terms)
 - **Misspecified Model**: (e.g. modeling a tri-allelic variant with only one term)
@@ -21,11 +21,11 @@ Users can customize parameters such as:
 
 # Why use SetDesign?
 
-Researchers make many important - but often unreported - data processing choices in set-based genetic association analysis. These choices can greatly affect the stability and reproducibility of set-based results. SetDesign helps researchers easily understand the (potentiall) large impacts of their choices at the start of their study.
+Researchers make many important - but often unreported - data processing choices in set-based genetic association analysis. These choices can greatly affect the stability and reproducibility of set-based results. SetDesign helps researchers easily understand the (potential) large impacts of their choices at the start of their study.
 
 # Example
 
-Suppose we want to calculate the power of the SKAT test for a binary outcome. Assume we are interested in the situation where there are `kk=50` total SNPs and `n=2000` subjects. Assume further that we want to consider the setting where the one true causal SNP is a tri-allelic SNP where both non-reference alleles have a non-zero effect. However, we misspecify the model by modeling the causal SNP as a single covariate and simply summing the number of non-reference alleles. 
+Suppose we want to calculate the power of the SKAT test for a binary outcome in a misspecified model. Assume we are interested in the situation where there are `kk=50` total SNPs and `n=2000` subjects. Assume further that we want to consider the setting where the one true causal SNP is a tri-allelic SNP where both non-reference alleles have a non-zero effect. However, we misspecify the model by modeling the causal SNP as a single covariate and simply summing the number of non-reference alleles. 
 
 ``` r
 library(SetDesign)
@@ -48,13 +48,13 @@ list1=c(-0.1,-0.25,-0.5,-0.75,-0.9)
 # Set true effect sizes of the second alternative allele
 list2=c(rep(0.5,5))
 
-# get the power for SKAT test under the misspecified
+# get the power for SKAT test under the misspecified model
 powerD_derive(kk,n,p,alpha,list1,list2)
 #> [1] 0.08653423 0.09248395 0.11143999 0.13961267 0.15997840
 ```
 
 
-Next we consider model misspecification. We show how to get the regression coefficient estimates of in the misspecified model when tri-allelic variants are treated as bi-allelic. 
+Next we consider estimating regression coefficients under model misspecification. We show how to get the regression coefficient estimates in the misspecified model when tri-allelic variants are treated as bi-allelic. 
  For binary outcomes: 
 
 ``` r
